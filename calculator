@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sassy Calculator 💅</title>
+  <style>
+    body {
+      background: #ffe4f2;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    #display {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      text-align: right;
+      border-radius: 10px;
+      border: 2px solid pink;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+      justify-content: center;
+    }
+    button {
+      padding: 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #ffcce7;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: hotpink;
+      color: white;
+    }
+    #sass {
+      margin-top: 15px;
+      font-style: italic;
+      color: #d63384;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input id="display" disabled>
+    <div class="buttons">
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('/')">÷</button>
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('*')">×</button>
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('-')">−</button>
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="press('+')">+</button>
+      <button onclick="clearDisplay()">C</button>
+    </div>
+    <p id="sass"></p>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+    let sass = document.getElementById("sass");
+
+    function press(num) {
+      display.value += num;
+    }
+
+    function clearDisplay() {
+      display.value = "";
+      sass.textContent = "";
+    }
+
+    function calculate() {
+      try {
+        let result = eval(display.value);
+        display.value = result;
+        giveSass(result);
+      } catch {
+        sass.textContent = "Um babe… that’s not math 💅";
+      }
+    }
+
+    function giveSass(result) {
+      if (result === Infinity) {
+        sass.textContent = "Girl i know you just didn't�like be so fr rn 😐";
+      } else if (result < 0) {
+        sass.textContent = "Oop, someone’s in their flop era 📉";
+      } else if (result > 1000000) {
+        sass.textContent = "Ok moneybags 💸 share the wealth!";
+      } else if (result % 2 === 0) {
+        sass.textContent = "Even queen ✨ balanced & thriving.";
+      } else {
+        sass.textContent = "Odd baddie 💃 keep slaying.";
+      }
+    }
+  </script>
+</body>
+</html>
